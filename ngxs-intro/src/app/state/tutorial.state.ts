@@ -13,11 +13,12 @@ export class TutorialStateModel {
   },
 })
 export class TutorialState {
+//@Selector to create functions that return data
   @Selector()
   static getTutorials(state: TutorialStateModel) {
     return state.tutorials;
   }
-
+//@Action to handle dispatched actions
   @Action(AddTutorial)
   add(
     { getState, patchState }: StateContext<TutorialStateModel>,
