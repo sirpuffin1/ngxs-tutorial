@@ -3,7 +3,7 @@ import { Tutorial } from '../models/tutorial.model';
 import { AddTutorial, RemoveTutorial } from '../actions/tutorial.action';
 //create a state model
 export class TutorialStateModel {
-  tutorials: Tutorial[] = [];
+  tutorials!: Tutorial[] ;
 }
 //use state decorator to define a name and default values based on the state model above
 @State<TutorialStateModel>({
@@ -32,10 +32,10 @@ export class TutorialState {
 
   @Action(RemoveTutorial)
   remove(
-    { getState, patchState }: StateContext<TutorialStateModel>,
+    { getState, setState }: StateContext<TutorialStateModel>,
     { payload }: RemoveTutorial
   ) {
-    patchState({
+    setState({
       tutorials: getState().tutorials.filter((a) => a.name != payload),
     });
   }
